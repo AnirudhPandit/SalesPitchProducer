@@ -1,128 +1,77 @@
-const sourceFilters = ['Web', 'Fast research'];
-
-const studioTools = [
-  'Audio Overview',
-  'Video Overview',
-  'Mind Map',
-  'Reports',
-  'Flashcards',
-  'Quiz',
-  'Infographic',
-  'Slide deck',
-  'Data table'
+const recentNotes = [
+  'Q2 Growth Strategy Brainstorm',
+  'Enterprise ICP Research',
+  'Sales Narrative Draft V4'
 ];
 
-const uploadOptions = ['Upload files', 'Websites', 'Drive', 'Copied text'];
+const prompts = [
+  {
+    title: 'Generate GTM pitch',
+    subtitle: 'Based on product docs + customer insights'
+  },
+  {
+    title: 'Rewrite for CFO audience',
+    subtitle: 'Keep value framing and shorten to 90 seconds'
+  },
+  {
+    title: 'Extract objection handlers',
+    subtitle: 'Create a concise table with rebuttals'
+  }
+];
 
 function App() {
   return (
-    <div className="app-shell">
-      <header className="top-header">
-        <div className="title-wrap">
-          <div className="logo-mark" aria-hidden="true">◍</div>
-          <h1>Untitled notebook</h1>
-        </div>
+    <div className="page-shell">
+      <aside className="sidebar">
+        <div className="brand">SalesPitchProducer</div>
+        <button className="new-note-btn">+ New Notebook</button>
 
-        <div className="top-actions">
-          <button className="create-btn">+ Create notebook</button>
-          <button className="ghost-btn">Share</button>
-          <button className="ghost-btn">Settings</button>
-          <button className="icon-btn" aria-label="apps">⋮⋮</button>
-          <div className="avatar" aria-label="profile" />
-        </div>
-      </header>
+        <nav className="nav-group">
+          <p className="group-label">Recent</p>
+          {recentNotes.map((note) => (
+            <button className="nav-item" key={note}>
+              {note}
+            </button>
+          ))}
+        </nav>
 
-      <main className="workspace-grid">
-        <section className="panel sources-panel">
-          <div className="panel-header">
-            <h2>Sources</h2>
-            <button className="mini-icon">◫</button>
-          </div>
+        <div className="storage-pill">8 of 20 notebooks used</div>
+      </aside>
 
-          <button className="add-sources">＋ Add sources</button>
+      <main className="main-panel">
+        <header className="top-bar">
+          <div className="search-pill">Search notebooks, sources, and chats…</div>
+          <div className="profile-dot" aria-label="profile" />
+        </header>
 
-          <div className="search-card compact">
-            <p>Search the web for new sources</p>
-            <div className="chip-row">
-              {sourceFilters.map((item) => (
-                <button className="chip" key={item}>{item}</button>
-              ))}
-              <button className="search-go">➜</button>
-            </div>
-          </div>
-
-          <div className="sources-empty">
-            <div className="empty-icon">📄</div>
-            <h3>Saved sources will appear here</h3>
-            <p>
-              Click Add source above to add PDFs, websites, text, videos or audio files.
-            </p>
+        <section className="hero">
+          <p className="eyebrow">Notebook-style AI workspace</p>
+          <h1>Turn product knowledge into high-converting sales stories</h1>
+          <p className="hero-subtext">
+            Organize docs, call transcripts, and market research into a single notebook.
+            Ask questions, draft pitches, and generate role-specific messaging in seconds.
+          </p>
+          <div className="hero-actions">
+            <button className="primary-btn">Create a notebook</button>
+            <button className="secondary-btn">Import sources</button>
           </div>
         </section>
 
-        <section className="panel chat-panel">
-          <div className="panel-header">
-            <h2>Chat</h2>
-            <button className="mini-icon">⋮</button>
-          </div>
-
-          <div className="hero-card">
-            <button className="close-btn">×</button>
-            <h3>
-              Create Audio and Video Overviews from <span>your notes</span>
-            </h3>
-
-            <div className="search-card">
-              <p>Search the web for new sources</p>
-              <div className="chip-row">
-                {sourceFilters.map((item) => (
-                  <button className="chip" key={`chat-${item}`}>{item}</button>
-                ))}
-                <button className="search-go">➜</button>
-              </div>
-            </div>
-
-            <div className="upload-box">
-              <p className="upload-title">or drop your files</p>
-              <p className="upload-sub">pdf, images, docs, audio</p>
-              <div className="upload-actions">
-                {uploadOptions.map((option) => (
-                  <button className="pill" key={option}>{option}</button>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="chat-input-row">
-            <p>Start typing...</p>
-            <span>0 sources</span>
-            <button className="send-btn">➜</button>
-          </div>
-          <p className="footnote">NotebookLM can be inaccurate; please double-check responses.</p>
+        <section className="prompt-grid">
+          {prompts.map((prompt) => (
+            <article className="prompt-card" key={prompt.title}>
+              <h2>{prompt.title}</h2>
+              <p>{prompt.subtitle}</p>
+            </article>
+          ))}
         </section>
 
-        <section className="panel studio-panel">
-          <div className="panel-header">
-            <h2>Studio</h2>
-            <button className="mini-icon">◫</button>
+        <section className="chat-preview">
+          <div className="bubble user">Create a pitch for our AI copilot focused on manufacturing leaders.</div>
+          <div className="bubble ai">
+            Here is a 60-second narrative: “Plant managers are overwhelmed by disconnected dashboards...
+            ”
           </div>
-
-          <div className="studio-banner">
-            Create an Audio Overview in: हिंदी, বাংলা, ગુજરાતી, ಕನ್ನಡ, മലയാളം, मराठी, ਪੰਜਾਬੀ, தமிழ், తెలుగు
-          </div>
-
-          <div className="studio-grid">
-            {studioTools.map((tool) => (
-              <button className="studio-tile" key={tool}>{tool}</button>
-            ))}
-          </div>
-
-          <div className="studio-empty">
-            <h3>Studio output will be saved here.</h3>
-            <p>After adding sources, click to add Audio Overview, study guide, mind map and more.</p>
-          </div>
-
-          <button className="note-btn">Add note</button>
         </section>
       </main>
     </div>
