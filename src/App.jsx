@@ -190,7 +190,9 @@ function App() {
         </div>
       </header>
 
-      <main className="workspace-grid">
+      <main
+        className={`workspace-grid ${isSourcesCollapsed ? 'sources-collapsed' : ''} ${isStudioCollapsed ? 'studio-collapsed' : ''}`.trim()}
+      >
         <section className={`panel sources-panel ${isSourcesCollapsed ? 'collapsed' : ''}`}>
           <div className="panel-header">
             <h2>Sources</h2>

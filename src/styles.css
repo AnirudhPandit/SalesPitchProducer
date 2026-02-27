@@ -38,6 +38,10 @@ button, input { font: inherit; color: inherit; }
 .avatar { width: 36px; height: 36px; border-radius: 50%; border: 2px solid #33415c; background: linear-gradient(135deg, #2bc5c7, #5975ff); }
 
 .workspace-grid { display: grid; grid-template-columns: 1.02fr 2fr 1.02fr; gap: 12px; min-height: calc(100vh - 98px); }
+.workspace-grid.sources-collapsed { grid-template-columns: 84px 1fr 1.02fr; }
+.workspace-grid.studio-collapsed { grid-template-columns: 1.02fr 1fr 84px; }
+.workspace-grid.sources-collapsed.studio-collapsed { grid-template-columns: 84px 1fr 84px; }
+
 .panel {
   border: 1px solid var(--border); border-radius: 16px;
   background: linear-gradient(180deg, var(--panel) 0%, var(--panel-soft) 100%);
