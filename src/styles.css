@@ -1,0 +1,120 @@
+:root {
+  --bg: #0b0f16;
+  --panel: #111722;
+  --panel-soft: #0d131d;
+  --border: #222a38;
+  --text: #dfe5ef;
+  --muted: #8b97ab;
+  --accent: #7f8dff;
+  --green: #6fd6a3;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  color: var(--text);
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at 30% -20%, #1d2a45, transparent 40%), var(--bg);
+  color: var(--text);
+}
+button, input { font: inherit; color: inherit; }
+
+.app-shell { min-height: 100vh; padding: 14px; }
+.top-header {
+  height: 58px; border: 1px solid var(--border); border-radius: 14px; background: #0b1019;
+  display: flex; align-items: center; justify-content: space-between; padding: 0 14px; margin-bottom: 12px;
+}
+.title-wrap { display: flex; align-items: center; gap: 10px; }
+.logo-mark { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: #d5dae3; color: #0b0f16; }
+.title-wrap h1 { margin: 0; font-weight: 500; font-size: 1.1rem; }
+.top-actions { display: flex; align-items: center; gap: 8px; }
+
+.create-btn, .ghost-btn, .icon-btn, .mini-icon, .add-sources, .chip, .pill, .send-btn, .note-btn, .studio-tile, .small-btn {
+  border: 1px solid var(--border); background: #141b27; border-radius: 999px; cursor: pointer;
+}
+.create-btn { padding: 9px 16px; background: #dce1ea; color: #121721; font-weight: 600; }
+.ghost-btn { padding: 8px 14px; }
+.icon-btn { border-radius: 12px; width: 36px; height: 36px; }
+.avatar { width: 36px; height: 36px; border-radius: 50%; border: 2px solid #33415c; background: linear-gradient(135deg, #2bc5c7, #5975ff); }
+
+.workspace-grid { display: grid; grid-template-columns: 1.02fr 2fr 1.02fr; gap: 12px; min-height: calc(100vh - 98px); }
+.workspace-grid.sources-collapsed { grid-template-columns: 84px 1fr 1.02fr; }
+.workspace-grid.studio-collapsed { grid-template-columns: 1.02fr 1fr 84px; }
+.workspace-grid.sources-collapsed.studio-collapsed { grid-template-columns: 84px 1fr 84px; }
+
+.panel {
+  border: 1px solid var(--border); border-radius: 16px;
+  background: linear-gradient(180deg, var(--panel) 0%, var(--panel-soft) 100%);
+  display: flex; flex-direction: column;
+}
+.panel-header { display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; border-bottom: 1px solid #1f2735; }
+.panel-header h2 { margin: 0; font-size: 1.1rem; font-weight: 500; }
+.mini-icon { width: 28px; height: 28px; border-radius: 8px; background: transparent; }
+
+.sources-panel.collapsed, .studio-panel.collapsed { min-width: 72px; }
+.sources-panel.collapsed .panel-header, .studio-panel.collapsed .panel-header { justify-content: center; }
+.sources-panel.collapsed .panel-header h2, .studio-panel.collapsed .panel-header h2 { display: none; }
+
+.sources-panel, .studio-panel { padding-bottom: 16px; }
+.add-sources { margin: 12px 14px 8px; padding: 10px; background: transparent; }
+
+.search-card {
+  margin: 10px 16px; border: 1px solid #2f3f6f; border-radius: 16px; padding: 14px; background: #0b1019;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.search-card label { color: #c8cfde; }
+.search-card input, .chat-input-row input {
+  border: 1px solid #2b3550; border-radius: 10px; background: #0a0f18; color: #d7dfef;
+  padding: 10px 12px; outline: none;
+}
+.search-card input:focus, .chat-input-row input:focus { border-color: var(--accent); }
+.chip-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.chip { padding: 7px 12px; background: #1a2332; }
+.chip.active { border-color: var(--accent); background: #222f4b; }
+.small-btn { padding: 7px 11px; margin-left: auto; }
+
+.sources-empty, .studio-empty { margin-top: auto; text-align: center; padding: 24px; color: var(--muted); }
+
+.chat-panel { padding-bottom: 10px; }
+.hero-card { margin: 18px; border: 1px solid #161f2f; border-radius: 18px; background: #0a0d14; padding: 22px; position: relative; }
+.close-btn { position: absolute; top: 12px; right: 14px; border: none; background: transparent; color: #c1c9d9; font-size: 2rem; cursor: pointer; }
+.hero-card h3 { margin: 0 0 18px; font-weight: 500; font-size: clamp(1.2rem, 1.9vw, 2rem); text-align: center; }
+.hero-card h3 span { color: var(--green); }
+
+.upload-box { margin-top: 16px; border: 1px dashed #3a455c; border-radius: 16px; padding: 26px 16px; background: #141a26; text-align: center; }
+.upload-box.drag-active { border-color: var(--accent); background: #1a2233; }
+.upload-title { margin: 0; font-size: 1.4rem; }
+.upload-sub { margin: 8px 0 16px; color: #a3adc3; }
+.upload-actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.pill { padding: 9px 14px; background: #1d2534; }
+.file-pill input { display: none; }
+
+.messages-log {
+  margin: 0 14px 8px; border: 1px solid #24304a; border-radius: 14px; min-height: 120px;
+  max-height: 220px; overflow: auto; padding: 10px; display: flex; flex-direction: column; gap: 8px;
+}
+.msg { border-radius: 10px; padding: 8px 10px; background: #171f30; }
+.msg.user { background: #1f2f4b; }
+.msg.model { background: #1e2f2c; }
+.msg.system { background: #272334; }
+.msg.source { background: #2b2530; }
+.msg strong { display: block; text-transform: capitalize; font-size: 0.8rem; color: #9eabbe; }
+.msg p { margin: 4px 0 0; }
+
+.chat-input-row {
+  margin: 0 14px 8px; border: 1px solid #24304a; border-radius: 14px; min-height: 48px;
+  display: flex; align-items: center; padding: 6px 8px; gap: 10px;
+}
+.chat-input-row input { flex: 1; border: none; background: transparent; }
+.chat-input-row span { color: #6f7b94; font-size: 0.88rem; }
+.send-btn { width: 32px; height: 32px; border-radius: 50%; }
+.footnote { text-align: center; margin: 4px 0 0; color: #8e9ab1; font-size: 0.83rem; }
+
+.studio-banner { margin: 14px 14px 8px; border-radius: 10px; padding: 10px; background: linear-gradient(90deg, #2d3b70, #224f3b); font-size: 0.9rem; }
+.studio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 8px 14px; }
+.studio-tile { border-radius: 10px; text-align: left; padding: 12px 10px; background: #131c2c; }
+.note-btn { align-self: center; margin-top: auto; padding: 10px 20px; background: #dce1ea; color: #111722; font-weight: 600; }
+
+@media (max-width: 1200px) {
+  .workspace-grid { grid-template-columns: 1fr; }
+}
