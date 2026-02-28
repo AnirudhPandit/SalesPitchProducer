@@ -178,14 +178,14 @@ function App() {
       <header className="top-header">
         <div className="title-wrap">
           <div className="logo-mark" aria-hidden="true">◍</div>
-          <h1>Untitled notebook</h1>
+          {/* <h1>Untitled notebook</h1> */}
         </div>
 
         <div className="top-actions">
           <button className="create-btn" onClick={() => handleAction('create_notebook')}>+ Create notebook</button>
           <button className="ghost-btn" onClick={() => handleAction('share_notebook')}>Share</button>
           <button className="ghost-btn" onClick={() => handleAction('open_settings')}>Settings</button>
-          <button className="icon-btn" aria-label="apps" onClick={() => handleAction('open_apps')}>⋮⋮</button>
+          <button className="icon-btn" aria-label="apps" onClick={() => handleAction('open_apps')}>⋮</button>
           <div className="avatar" aria-label="profile" />
         </div>
       </header>
